@@ -70,6 +70,10 @@ namespace Markdig.SyntaxHighlighting {
         private static string GetCode(LeafBlock obj, out string firstLine) {
             var code = new StringBuilder();
             firstLine = null;
+            if (obj.Lines.Lines is null)
+            {
+                return string.Empty;
+            }
             foreach (var line in obj.Lines.Lines) {
                 var slice = line.Slice;
                 if (slice.Text == null) {
